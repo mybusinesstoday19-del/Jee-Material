@@ -1,0 +1,9 @@
+{
+    "name": "telegram/bot",
+    "description": "Simple PHP Telegram Bot",
+    "require": {
+        "php": "^8.0",
+        "ext-json": "*",
+        "ext-curl": "*"
+    }
+}
