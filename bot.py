@@ -1,8 +1,27 @@
-import os
-# ... other imports
+import sys
+import subprocess
 
-# Replace the hardcoded string with this:
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+# --- AUTO-INSTALLER BLOCK ---
+# This forces the installation of python-telegram-bot inside the script
+# so you don't need a requirements.txt file.
+try:
+    import telegram
+except ImportError:
+    print("⚠️ Module 'telegram' not found. Installing 'python-telegram-bot' now...")
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "python-telegram-bot"])
+        print("✅ Installation successful!")
+    except Exception as e:
+        print(f"❌ Failed to install module: {e}")
+# -----------------------------
+
+# Now we can import the library safely
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+from telegram.error import BadRequest
+
+# API KEY (Bot Token)
+BOT_TOKEN = '8224462231:AAFBAW-jigafWbEWuQLtoMbOYhl3Q15Zqs0'
 
 # Global Materials Library
 # Structure: stream_subject -> { category -> content }
@@ -11,7 +30,6 @@ MATERIALS = {
         'notes': (
             "📝 *JEE/NEET Physics - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
         ),
         'books': (
             "📚 *JEE/NEET Physics - Standard Books*\n"
@@ -42,7 +60,6 @@ MATERIALS = {
         'pyqs': (
             "❓ *All JEE Papers*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
         )
     },
     'jee_chemistry': {
@@ -62,22 +79,16 @@ MATERIALS = {
             "• Lakshya Jee Chemistry Module 3: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshya-jee-chemistry-module-3.html)\n"
             "• LakshyaJeeChemistryModule1: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeechemistrymodule1.html)\n"
             "Ms Chouhan 19th Edition By:Download](https://jee-materials-bot.blogspot.com/2026/02/ms-chouhan-19th-edition-by-studyshelf.html)\n"
-
         ),
-
-
         'pyqs': (
             "❓ *All JEE Papers*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
         )
     },
     'jee_maths': {
         'notes': (
             "📝 *JEE Maths - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
-
         ),
         'books': (
             "📚 *JEE Maths Books*\n\n[Cengage](...)\n[Arihant](...)\n"
@@ -86,14 +97,11 @@ MATERIALS = {
             "❓ *All JEE Papers*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
         )
-
     },
     'neet_physics': {
         'notes': (
             "📝 *JEE/NEET Physics - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
-
         ),
         'books': (
             "📚 *JEE/NEET Physics - Standard Books*\n"
@@ -129,12 +137,10 @@ MATERIALS = {
         'notes': (
             "📝 *JEE/NEET Chemistry - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
         ),
         'books': (
             "📚 *JEE/NEET Chemistry - Standard Books & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
         ),
         'pyqs': (
             "❓ *NEET Chemistry PYQs*\n\n[2023](...)\n[2022](...)\n"
@@ -149,8 +155,6 @@ MATERIALS = {
         'books': (
             "📚 *NEET Biology - Standard Books & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
-
-
         ),
         'pyqs': (
             "❓ *NEET Biology PYQs*\n\n[2023](...)\n[2022](...)\n"
@@ -297,4 +301,3 @@ if __name__ == '__main__':
 
     print("Polling...")
     application.run_polling()
-# Added: B.M Sharma - Physics For IIT-JEE 2012-2013 _ Mechanics - I-Cengage (2012).pdf -> https://jee-materials-bot.blogspot.com/2026/01/bm-sharma-physics-for-iit-jee-2012-2013.html [jee_physics/books]
