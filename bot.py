@@ -1,9 +1,8 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
-from telegram.error import BadRequest
+import os
+# ... other imports
 
-# API KEY (Bot Token)
-BOT_TOKEN = '8224462231:AAFBAW-jigafWbEWuQLtoMbOYhl3Q15Zqs0'
+# Replace the hardcoded string with this:
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 # Global Materials Library
 # Structure: stream_subject -> { category -> content }
