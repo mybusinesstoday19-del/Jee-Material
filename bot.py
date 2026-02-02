@@ -1,21 +1,3 @@
-import sys
-import subprocess
-
-# --- AUTO-INSTALLER BLOCK ---
-# This forces the installation of python-telegram-bot inside the script
-# so you don't need a requirements.txt file.
-try:
-    import telegram
-except ImportError:
-    print("⚠️ Module 'telegram' not found. Installing 'python-telegram-bot' now...")
-    try:
-        subprocess.check_call([sys.executable, "-m", "pip", "install", "python-telegram-bot"])
-        print("✅ Installation successful!")
-    except Exception as e:
-        print(f"❌ Failed to install module: {e}")
-# -----------------------------
-
-# Now we can import the library safely
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 from telegram.error import BadRequest
@@ -30,6 +12,7 @@ MATERIALS = {
         'notes': (
             "📝 *JEE/NEET Physics - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+
         ),
         'books': (
             "📚 *JEE/NEET Physics - Standard Books*\n"
@@ -37,15 +20,15 @@ MATERIALS = {
             "• ARJUNA JEE (2025) PHYSICS MODULE 2: [Download](https://jee-materials-bot.blogspot.com/2026/01/arjuna-jee-2025-physics-module-2_01413026203.html)\n"
             "• ARJUNA JEE (2025) PHYSICS MODULE 3: [Download](https://jee-materials-bot.blogspot.com/2026/01/arjuna-jee-2025-physics-module-3_01361103017.html)\n"
             "• ARJUNA JEE (2025) PHYSICS MODULES 4: [Download](https://jee-materials-bot.blogspot.com/2026/01/arjuna-jee-2025-physics-modules-4_0529309805.html)\n"
-            "• B. M. Sharma-Electrostatics and Current Electricity (Advanced) CENGAGE INDIA(2019): [Download](https://jee-materials-bot.blogspot.com/2026/01/b-m-sharma-electrostatics-and-current_01959555478.html)\n"
-            "• B. M. Sharma-Optics and Modern Physics (Advanced) CENGAGE INDIA (2019)_11zon: [Download](https://jee-materials-bot.blogspot.com/2026/01/b-m-sharma-optics-and-modern-physics_01726081198.html)\n"
-            "• B. M. Sharma-Waves & Thermodynamics (Advanced)-CENGAGE INDIA (2019): [Download](https://jee-materials-bot.blogspot.com/2026/01/b-m-sharma-waves-thermodynamics-for-jee_018844099.html)\n"
+            "• B. M. Sharma - Electrostatics and Current Electricity for JEE (Advanced)-CENGAGE INDIA (2019) (1): [Download](https://jee-materials-bot.blogspot.com/2026/01/b-m-sharma-electrostatics-and-current_01959555478.html)\n"
+            "• B. M. Sharma - Optics and Modern Physics for JEE (Advanced)-CENGAGE INDIA (2019)_11zon: [Download](https://jee-materials-bot.blogspot.com/2026/01/b-m-sharma-optics-and-modern-physics_01726081198.html)\n"
+            "• B. M. Sharma - Waves & Thermodynamics for JEE (Advanced)-CENGAGE INDIA (2019): [Download](https://jee-materials-bot.blogspot.com/2026/01/b-m-sharma-waves-thermodynamics-for-jee_018844099.html)\n"
             "• B.M Sharma - Physics For IIT-JEE 2012-2013 _ Mechanics - I-Cengage (2012): [Download](https://jee-materials-bot.blogspot.com/2026/01/bm-sharma-physics-for-iit-jee-2012-2013_0326850158.html)\n"
             "• B.M Sharma - Physics For IIT-JEE 2012-2013 _ Mechanics - II-Cengage (2012): [Download](https://jee-materials-bot.blogspot.com/2026/01/bm-sharma-physics-for-iit-jee-2012-2013_01274091687.html)\n"
             "• DC PANDEY ELECTRICITY AND MAGNETISM ( COMPLETE ): [Download](https://jee-materials-bot.blogspot.com/2026/01/dc-pandey-electricity-and-magnetism_0583098761.html)\n"
             "• DC PANDEY MECHANICS 1: [Download](https://jee-materials-bot.blogspot.com/2026/01/dc-pandey-mechanics-1.html)\n"
             "• DC PANDEY MECHANICS 2: [Download](https://jee-materials-bot.blogspot.com/2026/01/dc-pandey-mechanics-2_0183089731.html)\n"
-            "• DC PANDEY OPTICS AND MODERN PHYSICS: [Download](https://jee-materials-bot.blogspot.com/2026/01/dc-pandey-optics-and-modern-physics_0310171688.html)\n"
+            "• DC PANDEY OPTICS AND MODERN PHYSICS ( COMPLETE ): [Download](https://jee-materials-bot.blogspot.com/2026/01/dc-pandey-optics-and-modern-physics_0310171688.html)\n"
             "• dc-pandey-physics-pdf-945d46f5: [Download](https://jee-materials-bot.blogspot.com/2026/01/dc-pandey-physics-pdf-945d46f5.html)\n"
             "• JEE_Physics_Complete_Module: [Download](https://jee-materials-bot.blogspot.com/2026/01/jeephysicscompletemodule.html)\n"
             "• Kinematics__HC_Verma__5_with_anno: [Download](https://jee-materials-bot.blogspot.com/2026/01/kinematicshcverma5withanno.html)\n"
@@ -54,12 +37,13 @@ MATERIALS = {
             "• LAKSHYA JEE PHYSICS MODULE 3: [Download](https://jee-materials-bot.blogspot.com/2026/01/lakshya-jee-physics-module-3.html)\n"
             "• LAKSHYA JEE PHYSICS MODULE 4: [Download](https://jee-materials-bot.blogspot.com/2026/01/lakshya-jee-physics-module-4.html)\n"
             "• LakshyaJeePhysicsSolutionModule: [Download](https://jee-materials-bot.blogspot.com/2026/01/lakshyajeephysicssolutionmodule.html)\n"
-            "• SKC Physics Crush Class 11: [Download](https://jee-materials-bot.blogspot.com/2026/01/skc-physics-crush-class-11-by-studyshelf.html)\n"
+            "• SKC Physics Crush Class 11 By @StudyShelf: [Download](https://jee-materials-bot.blogspot.com/2026/01/skc-physics-crush-class-11-by-studyshelf.html)\n"
             "• Waves & Thermodynamics-DC Pandey: [Download](https://jee-materials-bot.blogspot.com/2026/01/waves-thermodynamics-dc-pandey.html)\n"
         ),
         'pyqs': (
             "❓ *All JEE Papers*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+
         )
     },
     'jee_chemistry': {
@@ -78,30 +62,41 @@ MATERIALS = {
             "• JEE_Chemistry_Complete_Module: [Download](https://jee-materials-bot.blogspot.com/2026/02/jeechemistrycompletemodule.html)\n"
             "• Lakshya Jee Chemistry Module 3: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshya-jee-chemistry-module-3.html)\n"
             "• LakshyaJeeChemistryModule1: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeechemistrymodule1.html)\n"
-            "Ms Chouhan 19th Edition By:Download](https://jee-materials-bot.blogspot.com/2026/02/ms-chouhan-19th-edition-by-studyshelf.html)\n"
+            "• LakshyaJeeChemistryModule2: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeechemistrymodule2.html)\n"
+            "• LakshyaJeeChemistryModule4: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeechemistrymodule4.html)\n"
+            "• LakshyaJeeChemistrySolutionModule: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeechemistrysolutionmodule.html)\n"
         ),
+
+
         'pyqs': (
             "❓ *All JEE Papers*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+
         )
     },
     'jee_maths': {
         'notes': (
             "📝 *JEE Maths - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+
+
         ),
         'books': (
             "📚 *JEE Maths Books*\n\n[Cengage](...)\n[Arihant](...)\n"
+            "• LakshyaJeeMathsModule11: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeemathsmodule11.html)\n"
         ),
         'pyqs': (
             "❓ *All JEE Papers*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
         )
+
     },
     'neet_physics': {
         'notes': (
             "📝 *JEE/NEET Physics - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+
+
         ),
         'books': (
             "📚 *JEE/NEET Physics - Standard Books*\n"
@@ -137,10 +132,12 @@ MATERIALS = {
         'notes': (
             "📝 *JEE/NEET Chemistry - Notes & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+
         ),
         'books': (
             "📚 *JEE/NEET Chemistry - Standard Books & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+
         ),
         'pyqs': (
             "❓ *NEET Chemistry PYQs*\n\n[2023](...)\n[2022](...)\n"
@@ -155,6 +152,8 @@ MATERIALS = {
         'books': (
             "📚 *NEET Biology - Standard Books & Resources*\n"
             "━━━━━━━━━━━━━━━━━━━━\n\n"
+            
+
         ),
         'pyqs': (
             "❓ *NEET Biology PYQs*\n\n[2023](...)\n[2022](...)\n"
@@ -176,7 +175,7 @@ def get_main_menu():
 
 def get_jee_menu():
     keyboard = [
-        [InlineKeyboardButton("⚡️ Physics", callback_data="sub_jee_physics"),
+        [InlineKeyboardButton("⚡️ Physics", callback_data="sub_jee_physics"), 
          InlineKeyboardButton("🧪 Chemistry", callback_data="sub_jee_chemistry")],
         [InlineKeyboardButton("📐 Maths", callback_data="sub_jee_maths")],
         [InlineKeyboardButton("🔙 Main Menu", callback_data="main_menu")]
@@ -185,7 +184,7 @@ def get_jee_menu():
 
 def get_neet_menu():
     keyboard = [
-        [InlineKeyboardButton("🔭 Physics", callback_data="sub_neet_physics"),
+        [InlineKeyboardButton("🔭 Physics", callback_data="sub_neet_physics"), 
          InlineKeyboardButton("🧪 Chemistry", callback_data="sub_neet_chemistry")],
         [InlineKeyboardButton("🧬 Biology", callback_data="sub_neet_biology")],
         [InlineKeyboardButton("🔙 Main Menu", callback_data="main_menu")]
@@ -195,7 +194,7 @@ def get_neet_menu():
 def get_type_menu(subject_key):
     # Determine label for PYQs based on exam type
     exam_type = "JEE" if "jee" in subject_key else "NEET"
-
+    
     keyboard = [
         [InlineKeyboardButton("📝 Notes", callback_data=f"show_{subject_key}_notes"),
          InlineKeyboardButton("📚 Books", callback_data=f"show_{subject_key}_books")],
@@ -235,23 +234,23 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except BadRequest:
         pass # Ignore if query is too old
     data = query.data
-
+    
     # 1. Main Navigation
     if data == "main_menu":
         await query.edit_message_text(
             text="🎓 *Main Menu* 🎓\n━━━━━━━━━━━━━━━━━━━━\nSelect your target exam:",
             parse_mode='Markdown', reply_markup=get_main_menu()
         )
-
+    
     elif data == "menu_jee":
         await query.edit_message_text(
-            text="👨‍🎓 *JEE Aspirants Zone*\n━━━━━━━━━━━━━━━━━━━━\nSelect your subject:",
+            text="👨‍🎓 *JEE Aspirants Zone*\n━━━━━━━━━━━━━━━━━━━━\nSelect your subject:", 
             parse_mode='Markdown', reply_markup=get_jee_menu()
         )
-
+        
     elif data == "menu_neet":
         await query.edit_message_text(
-            text="👨‍⚕️ *NEET Aspirants Zone*\n━━━━━━━━━━━━━━━━━━━━\nSelect your subject:",
+            text="👨‍⚕️ *NEET Aspirants Zone*\n━━━━━━━━━━━━━━━━━━━━\nSelect your subject:", 
             parse_mode='Markdown', reply_markup=get_neet_menu()
         )
 
@@ -259,10 +258,10 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif data.startswith("sub_"):
         subject_key = data[4:] # e.g., jee_physics
         display_name = subject_key.replace('_', ' ').title()
-
+        
         await query.edit_message_text(
-            text=f"📂 *{display_name} Material*\n━━━━━━━━━━━━━━━━━━━━\nWhat are you looking for?",
-            parse_mode='Markdown',
+            text=f"📂 *{display_name} Material*\n━━━━━━━━━━━━━━━━━━━━\nWhat are you looking for?", 
+            parse_mode='Markdown', 
             reply_markup=get_type_menu(subject_key)
         )
 
@@ -272,18 +271,18 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parts = data.split('_') # ['show', 'jee', 'physics', 'notes']
         category_type = parts[-1] # 'notes'
         subject_key = f"{parts[1]}_{parts[2]}" # 'jee_physics'
-
+        
         # Safe fetch
         subject_data = MATERIALS.get(subject_key, {})
         content = subject_data.get(category_type, "⚠️ Content coming soon!")
-
+        
         # Back button goes back to the Type Selection menu for this subject
         back_callback = f"sub_{subject_key}"
-
+        
         await query.edit_message_text(
-            text=content,
-            parse_mode='Markdown',
-            disable_web_page_preview=True,
+            text=content, 
+            parse_mode='Markdown', 
+            disable_web_page_preview=True, 
             reply_markup=get_back_button(back_callback)
         )
 
@@ -301,4 +300,4 @@ if __name__ == '__main__':
 
     print("Polling...")
     application.run_polling()
-# end
+# Added: B.M Sharma - Physics For IIT-JEE 2012-2013 _ Mechanics - I-Cengage (2012).pdf -> https://jee-materials-bot.blogspot.com/2026/01/bm-sharma-physics-for-iit-jee-2012-2013.html [jee_physics/books]
