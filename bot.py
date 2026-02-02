@@ -85,6 +85,7 @@ MATERIALS = {
             "📚 *JEE Maths Books*\n\n[Cengage](...)\n[Arihant](...)\n"
             "• LakshyaJeeMathsModule11: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeemathsmodule11.html)\n"
             "• LakshyaJeeMathsModule2: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeemathsmodule2.html)\n"
+            "• LakshyaJeeMathsModule3: [Download](https://jee-materials-bot.blogspot.com/2026/02/lakshyajeemathsmodule3.html)\n"
         ),
         'pyqs': (
             "❓ *All JEE Papers*\n"
